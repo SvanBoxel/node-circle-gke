@@ -13,6 +13,6 @@ curl -X "POST" "https://api.github.com/repos/SvanBoxel/node-circle-gke/deploymen
      -H 'Content-Type: application/json; charset=utf-8' \
      -H 'Accept: application/vnd.github.ant-man-preview+json' \
      -d $'{
-  "environment_url": "'"${ENVIRONMENT_URL}"'"
+  "environment_url": "'"${ENVIRONMENT_URL}"'",
   "state": "success"
 }'
