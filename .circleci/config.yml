@@ -66,8 +66,8 @@ jobs:
             kubectl rollout status deployment/${PROJECT_NAME}
 
       - run: 
-        name: Update GitHub Release
-        command: |
+          name: Update GitHub Release
+          command: |
             apt-get install -qq -y jq
             ./scripts/update-deployment.sh 
 
