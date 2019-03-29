@@ -34,8 +34,8 @@ jobs:
       - checkout
       - run: 
           name: Create GitHub Release
-          commands: 
-            - bash ./create-deployment.sh 
+          command: |
+            bash ./create-deployment.sh 
 
       - run: 
           name: Setup Google Cloud SDK
