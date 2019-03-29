@@ -37,9 +37,9 @@ jobs:
           name: set_vars
           command: |
             if [[ $CIRCLE_BRANCH=="master" ]]; then
-              export GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_PRODUCTION}"
+              export GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_PRODUCTION}" >> $BASH_ENV
             else
-              export GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_STAGING}"
+              export GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_STAGING}" >> $BASH_ENV
             fi
       - run: 
           name: Create GitHub Release
