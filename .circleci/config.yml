@@ -29,9 +29,15 @@ jobs:
       - PROJECT_NAME: "my-first-project"
       - GOOGLE_PROJECT_ID: "keen-mission-236009"
       - GOOGLE_COMPUTE_ZONE: "us-central1-a"
-      - GOOGLE_CLUSTER_NAME: "standard-cluster-1"
+      - GOOGLE_CLUSTER_NAME_PRODUCTION: "standard-cluster-2"
+      - GOOGLE_CLUSTER_NAME_STAGING: "standard-cluster-1"
     steps:
       - checkout
+      - run:
+          name: set_vars
+          command: |
+            export GOOGLE_CLUSTER_NAME=if [$CIRCLE_BRANCH=="master"] then $GOOGLE_CLUSTER_NAME_STAGING else $GOOGLE_CLUSTER_NAME_PRODUCTION fi
+            echo $GOOGLE_CLUSTER_NAME
       - run: 
           name: Create GitHub Release
           command: |
@@ -60,13 +66,6 @@ jobs:
             gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://eu.gcr.io
             docker push eu.gcr.io/${GOOGLE_PROJECT_ID}/${PROJECT_NAME}:${CIRCLE_SHA1}
 
-      - run: 
-          name: Create namespace
-          command: |
-            KUBE_CONTEXT="gke_${GOOGLE_PROJECT_ID}_${GOOGLE_COMPUTE_ZONE}_${GOOGLE_CLUSTER_NAME}"
-            kubectl config use-context ${KUBE_CONTEXT}
-            kubectl create namespace ${CIRCLE_SHA1}
- 
       - run: 
           name: Deploy to Kubernetes
           command: |
