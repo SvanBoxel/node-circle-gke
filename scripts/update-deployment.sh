@@ -2,7 +2,8 @@
 
 DEPLOYMENT_ID=`cat deployment_id`
 
-if [ "$CIRCLE_BRANCH" = "master" ]
+if [ "$CIRCLE_BRANCH" = "master" ] 
+then
   ENVIRONMENT_URL="http://35.225.249.226/"
 else
   ENVIRONMENT_URL="https://35.225.196.189/"
