@@ -3,7 +3,7 @@
 if [[ $CIRCLE_BRANCH=="master" ]]; then
   ENVIRONMENT="production"
 else
-  ENVIRONMENT="QA"
+  ENVIRONMENT="qa"
 fi
 
 curl -s -X "POST" "https://api.github.com/repos/SvanBoxel/node-circle-gke/deployments" \
