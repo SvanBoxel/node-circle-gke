@@ -66,7 +66,6 @@ jobs:
             KUBE_CONTEXT="gke_${GOOGLE_PROJECT_ID}_${GOOGLE_COMPUTE_ZONE}_${GOOGLE_CLUSTER_NAME}"
             kubectl config use-context ${KUBE_CONTEXT}
             kubectl create namespace ${CIRCLE_SHA1}
-            kubectl get secret codefresh-generated-r.cfcr.io-cfcr-default -o json | jq '.metadata.namespace = "${{CF_BRANCH_TAG_NORMALIZED}}"' | kubectl create --namespace ${{CF_BRANCH_TAG_NORMALIZED}} -f -
  
       - run: 
           name: Deploy to Kubernetes
