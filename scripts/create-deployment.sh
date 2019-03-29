@@ -11,6 +11,6 @@ curl -s -X "POST" "https://api.github.com/repos/SvanBoxel/node-circle-gke/deploy
      -H 'Content-Type: application/json; charset=utf-8' \
      -d $'{
       "ref": "'"${CIRCLE_BRANCH}"'",
-      "environment": "'"${ENVIRONMENT}"'" 
+      "environment": "'"${ENVIRONMENT}"'" ,
       "required_contexts": []
     }' | jq -r '.id' > deployment_id
