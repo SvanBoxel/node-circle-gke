@@ -33,6 +33,11 @@ jobs:
     steps:
       - checkout
       - run: 
+          name: Create GitHub Release
+          commands: 
+            - bash ./create-deployment.sh 
+
+      - run: 
           name: Setup Google Cloud SDK
           command: |
             apt-get install -qq -y gettext
