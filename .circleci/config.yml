@@ -34,7 +34,7 @@ jobs:
       - checkout
       - run: 
           name: Create GitHub Release
-          command: bash ${HOME}/${CIRCLE_PROJECT_REPONAME}/.circleci/create-deployment.sh 
+          command: bash ${HOME}/${CIRCLE_PROJECT_REPONAME}/scripts/create-deployment.sh 
 
       - run: 
           name: Setup Google Cloud SDK
