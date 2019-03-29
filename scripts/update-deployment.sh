@@ -3,7 +3,7 @@
 DEPLOYMENT_ID=`cat deployment_id`
 
 if [[ $CIRCLE_BRANCH=="master" ]]; then
-  ENVIRONMENT_URL="https://production.com"
+  ENVIRONMENT_URL="http://35.225.249.226/"
 else
   ENVIRONMENT_URL="https://staging.com"
 fi
