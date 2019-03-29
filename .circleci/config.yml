@@ -37,9 +37,9 @@ jobs:
           name: set_vars
           command: |
             if [[ $CIRCLE_BRANCH=="master" ]]; then
-              GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_PRODUCTION}"
+              export GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_PRODUCTION}"
             else
-              GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_STAGING}"
+              export GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_STAGING}"
             fi
             echo $GOOGLE_CLUSTER_NAME
       - run: 
