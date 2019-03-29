@@ -22,7 +22,7 @@ jobs:
           command: npm test
       # - store_test_results:
       #     path: test-results
-  deploy_to_staging:
+  deploy_code:
     docker:
       - image: google/cloud-sdk
     environment:
@@ -88,6 +88,6 @@ workflows:
   build_test_deploy:
     jobs:
       - build_and_test
-      - deploy_to_staging:
+      - deploy_code:
           requires:
             - build_and_test
