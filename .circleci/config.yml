@@ -63,7 +63,7 @@ jobs:
       - run: 
           name: Create namespace
           command: |
-            KUBE_CONTEXT="$GOOGLE_PROJECT_ID_$GOOGLE_COMPUTE_ZONE_$GOOGLE_CLUSTER_NAME"
+            KUBE_CONTEXT="${GOOGLE_PROJECT_ID}_${$GOOGLE_COMPUTE_ZONE}_${$GOOGLE_CLUSTER_NAME}"
             kubectl config use-context ${KUBE_CONTEXT}
             kubectl create namespace ${CIRCLE_SHA1}
             kubectl get secret codefresh-generated-r.cfcr.io-cfcr-default -o json | jq '.metadata.namespace = "${{CF_BRANCH_TAG_NORMALIZED}}"' | kubectl create --namespace ${{CF_BRANCH_TAG_NORMALIZED}} -f -
