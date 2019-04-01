@@ -14,7 +14,7 @@ const branchName = process.env.APP_BRANCH_NAME || 'N/A'
 
 app.get('/', (req, res) => {
     const welcome = myLib.helloWorld()
-    const text = `${welcome} everyone! 
+    const text = `${welcome}! 
 
     We're at commit ${commitRef} on branch ${branchName}.
 
