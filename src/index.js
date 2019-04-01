@@ -9,11 +9,12 @@ const myLib = require('./lib')
 
 const commitRef = process.env.APP_COMMIT_REF || 'N/A'
 const buildDate = process.env.APP_BUILD_DATE || new Date().toISOString()
+const branchName = process.env.BRANCH_NAME || 'N/A'
 
 
 app.get('/', (req, res) => {
     const welcome = myLib.helloWorld()
-    const text = `${welcome}! We're at commit ${commitRef} which was built at ${buildDate}`
+    const text = `${welcome}! We're at commit ${commitRef} on branch ${branchName} which was built at ${buildDate}`
     res.send(text)
 })
 
