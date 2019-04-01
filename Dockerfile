@@ -2,6 +2,7 @@ FROM node:10
 
 ARG COMMIT_REF
 ARG BUILD_DATE
+ARG BRANCH_NAME
 
 # Create app directory
 WORKDIR /usr/src/app
