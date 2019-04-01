@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>GitHub demo page</title>
+  <style>
+    body { text-align: center; padding: 150px; }
+    h1 { font-size: 50px; }
+    body { font: 20px Helvetica, sans-serif; color: #333; }
+    article { display: block; text-align: left; width: 650px; margin: 0 auto 100px auto; }
+    a { color: #dc8100; text-decoration: none; }
+    a:hover { color: #333; text-decoration: none; }
+  </style>
+</head>
+<body>
+  
+  <article>
+    <h1><%= welcome %></h1>
+    <h2></h2>
+    <div>
+      <p>What you see here is a demo page. We're using it as a placeholder, but as you can imagine it can contain anything.</p>
+      <p>We're at commit <strong><%= commitRef %></strong> on branch <strong><%= branchName %></strong>. It was built at <strong><%= buildDate %></strong>.</p>
+      <p>This page was rendered server-side.</p>
+      <p>&mdash; The GitHub Team</p>
+    </div>
+  </article>
+</body>
+</html>
