@@ -36,7 +36,7 @@ jobs:
       - run:
           name: set_vars
           command: |
-            if [[ $CIRCLE_BRANCH=="master" ]]; then
+            if [[ $CIRCLE_BRANCH = "master" ]]; then
               echo 'export GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_PRODUCTION}"' >> $BASH_ENV
             else
               echo 'export GOOGLE_CLUSTER_NAME="${GOOGLE_CLUSTER_NAME_STAGING}"' >> $BASH_ENV
