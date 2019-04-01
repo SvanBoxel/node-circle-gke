@@ -57,6 +57,7 @@ jobs:
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
             gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
+            kubectl get services --all-namespaces| grep LoadBalancer | awk '{print $5}' > ${HOME}/cluster-ip
       - setup_remote_docker
 
       - run: 
