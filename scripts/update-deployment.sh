@@ -4,10 +4,8 @@ DEPLOYMENT_ID=`cat deployment_id`
 
 if [ "$CIRCLE_BRANCH" = "master" ] 
 then
-  echo "aa"
   ENVIRONMENT_URL="http://35.225.249.226/"
 else
-  echo "bb"
   ENVIRONMENT_URL="http://35.225.196.189/"
 fi
 
