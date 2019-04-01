@@ -1,13 +1,8 @@
 #!/bin/bash
 
 DEPLOYMENT_ID=`cat deployment_id`
-
-if [ "$CIRCLE_BRANCH" = "master" ] 
-then
-  ENVIRONMENT_URL="http://35.225.249.226/"
-else
-  ENVIRONMENT_URL="http://35.225.196.189/"
-fi
+CLUSTER_IP=`cat cluster-ip`
+ENVIRONMENT_URL="http://${CLUSTER_IP}/"
 
 curl -X "POST" "https://api.github.com/repos/SvanBoxel/node-circle-gke/deployments/${DEPLOYMENT_ID}/statuses" \
      -H "Authorization: token ${GITHUB_TOKEN}" \

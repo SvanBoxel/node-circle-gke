@@ -20,8 +20,6 @@ jobs:
       - run:
           name: Run tests
           command: npm test
-      # - store_test_results:
-      #     path: test-results
   deploy_code:
     docker:
       - image: google/cloud-sdk
@@ -57,6 +55,7 @@ jobs:
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
             gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
+            kubectl get services --all-namespaces| grep LoadBalancer | awk '{print $5}' > cluster-ip
       - setup_remote_docker
 
       - run: 
@@ -79,7 +78,7 @@ jobs:
             kubectl rollout status deployment/${PROJECT_NAME}
 
       - run: 
-          name: Update GitHub Release
+          name: Update GitHub Deployment
           command: |
             apt-get install -qq -y jq
             ./scripts/update-deployment.sh 
