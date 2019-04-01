@@ -2,10 +2,11 @@
 
 DEPLOYMENT_ID=`cat deployment_id`
 
-if [[ $CIRCLE_BRANCH=="master" ]]; then
-  ENVIRONMENT_URL="http://35.225.249.226/"
+if [ "$CIRCLE_BRANCH" = "master" ] 
+then
+  ENVIRONMENT_URL="35.225.249.226"
 else
-  ENVIRONMENT_URL="https://staging.com"
+  ENVIRONMENT_URL="35.225.196.189"
 fi
 
 curl -X "POST" "https://api.github.com/repos/SvanBoxel/node-circle-gke/deployments/${DEPLOYMENT_ID}/statuses" \
