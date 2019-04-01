@@ -13,6 +13,8 @@ const branchName = process.env.APP_BRANCH_NAME || 'N/A'
 
 
 app.get('/', (req, res) => {
+    res.type('html');
+  
     const welcome = myLib.helloWorld()
     const text = `${welcome}! 
 
